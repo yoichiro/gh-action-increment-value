@@ -1,0 +1,26 @@
+name: Automated Value Increment
+description: Automated value increment
+author: Yoichiro Tanaka
+runs:
+  using: docker
+  image: Dockerfile
+branding:
+  icon: plus
+  color: green
+inputs:
+  target-directory:
+    description: 'A directory where has the target file'
+    default: ''
+    required: true
+  target-file:
+    description: 'A target file name'
+    required: true
+  prefix:
+    description: 'A prefix string'
+    required: true
+  suffix:
+    description: 'A suffix string'
+    required: true
+outputs:
+  newTag:
+    description: 'The newly created tag'
