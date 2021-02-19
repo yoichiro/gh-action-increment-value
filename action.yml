@@ -8,11 +8,11 @@ branding:
   icon: plus
   color: green
 inputs:
-  target-directory:
+  target_directory:
     description: 'A directory where has the target file'
     default: ''
     required: true
-  target-file:
+  target_file:
     description: 'A target file name'
     required: true
   prefix:
