@@ -12,7 +12,7 @@ Toolkit.run(async tools => {
     const targetFile = process.env.INPUT_TARGET_FILE;
     console.log(process.env.GITHUB_WORKSPACE);
     console.log(`targetFile: ${targetFile}`);
-    const content = fs.readFileSync(targetFile, 'utf8');
+    const content = fs.readFileSync(`./${targetFile}`, 'utf8');
     // Increment value
     const prefix = process.env.INPUT_PREFIX;
     const suffix = process.env.INPUT_SUFFIX;
