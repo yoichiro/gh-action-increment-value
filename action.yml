@@ -21,6 +21,3 @@ inputs:
   suffix:
     description: 'A suffix string'
     required: true
-outputs:
-  newTag:
-    description: 'The newly created tag'
