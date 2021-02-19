@@ -42,8 +42,8 @@ Toolkit.run(async tools => {
     const remoteRepo = `https://${process.env.GITHUB_ACTOR}:${process.env.GITHUB_TOKEN}@github.com/${process.env.GITHUB_REPORISORY}.git`;
     await tools.runInWorkspace('git', ['push', remoteRepo]);
     tools.exit.success('Incrementing the value successfully.');
-  } catch(e) {
-    tools.log(e);
+  } catch (e) {
+    tools.log.fatal(e);
     tools.exit.failure('Failed to increment the value.');
   }
 });
