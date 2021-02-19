@@ -27,7 +27,7 @@ Toolkit.run(async tools => {
     console.log(`Incremented the value from ${current} to ${next}.`);
     // Set git user
     await tools.exec(`git config user.name "${process.env.GITHUB_USER || 'Automated Increment value'}"`);
-    await tools.exec(`git config user.email "${process.env.GITHUB_EMAIL} || 'gh-action-increment-value@users.noreply.github.com"`);
+    await tools.exec(`git config user.email "${process.env.GITHUB_EMAIL || 'gh-action-increment-value@users.noreply.github.com'}"`);
     // Fetch current branch name
     let currentBranch = /refs\/[a-zA-Z]+\/(.*)/.exec(process.env.GITHUB_REF)[1];
     let isPullRequest = false;
@@ -39,7 +39,7 @@ Toolkit.run(async tools => {
     // Commit
     await tools.exec(`git commit -a -m "ci: Increment the value to ${next}"`);
     // Push
-    const remoteRepo = `https://${process.env.GITHUB_ACTOR}:${process.env.GITHUB_TOKEN}@github.com/${process.env.GITHUB_REPORISORY}.git`;
+    const remoteRepo = `https://${process.env.GITHUB_ACTOR}:${process.env.GITHUB_TOKEN}@github.com/${process.env.GITHUB_REPOSITORY}.git`;
     await tools.exec(`git push ${remoteRepo}`);
     tools.exit.success('Incrementing the value successfully.');
   } catch (e) {
