@@ -10,6 +10,7 @@ Toolkit.run(async tools => {
   try {
     // Read the target file
     const targetFile = process.env.INPUT_TARGET_FILE;
+    console.log(`targetFile: ${targetFile}`);
     const content = fs.readFileSync(targetFile, 'utf8');
     // Increment value
     const prefix = process.env.INPUT_PREFIX;
