@@ -21,3 +21,7 @@ inputs:
   suffix:
     description: 'A suffix string'
     required: true
+  commit_message:
+    description: 'A commit message'
+    default: 'Increment the value to '
+    required: true

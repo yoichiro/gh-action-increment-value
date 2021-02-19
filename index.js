@@ -36,7 +36,8 @@ Toolkit.run(async tools => {
     }
     console.log(`Current branch: ${currentBranch}`);
     // Commit
-    await tools.exec(`git commit -a -m "ci: Increment the value to ${next}"`);
+    const commitMessage = process.env.INPUT_COMMIT_MESSAGE;
+    await tools.exec(`git commit -a -m "ci: ${commitMessage} ${next}"`);
     // Push
     const remoteRepo = `https://${process.env.GITHUB_ACTOR}:${process.env.GITHUB_TOKEN}@github.com/${process.env.GITHUB_REPOSITORY}.git`;
     await tools.exec(`git push ${remoteRepo}`);
