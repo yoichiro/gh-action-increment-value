@@ -18,6 +18,8 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - 'foobar/baz/build_number.json'
 jobs:
   test:
     name: Increment value test
@@ -27,6 +29,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: ${{ github.ref }}
+          token: ${{ secrets.YOUR_PERSONAL_ACCESS_TOKEN }}
       - name: Increment value
         uses: yoichiro/gh-action-increment-value@main
         with:
@@ -42,3 +45,7 @@ jobs:
 * prefix - The prefix string to determine the start position of the target number.
 * suffix - The suffix string to determine the end position of the target number.
 * commit_message - The commit message (automatically the number appended.).
+
+To push the commit of updating the number successfully, you may specify the personal access token who has a permission (which has a repo scope) to push the commit. For example, if there are some rules to protect the branch, you need to specify the token to avoid the rules.
+
+Also, you need to specify the `paths-ignore` to avoid executing the same job continuously.
