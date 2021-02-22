@@ -1,5 +1,5 @@
-name: Automated Value Increment
-description: Automated value increment
+name: Increment value automatically
+description: Allow you to increment a value on your file automatically.
 author: Yoichiro Tanaka
 runs:
   using: docker
