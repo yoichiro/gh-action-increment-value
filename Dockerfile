@@ -1,4 +1,4 @@
-FROM node:16.15-slim
+FROM node:19
 
 LABEL "com.github.actions.name"="Automated value increment."
 LABEL "com.github.actions.description"="Automated value increment."
