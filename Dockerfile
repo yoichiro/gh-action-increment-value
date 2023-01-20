@@ -8,7 +8,7 @@ LABEL "com.github.actions.color"="green"
 COPY package*.json ./
 
 RUN apt-get update
-RUN apt-get -y install git
+RUN apt-get -y install git git-lfs
 RUN npm install
 
 COPY . .
