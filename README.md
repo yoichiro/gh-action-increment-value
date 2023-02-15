@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out source code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           ref: ${{ github.ref }}
           token: ${{ secrets.YOUR_PERSONAL_ACCESS_TOKEN }}
@@ -49,3 +49,5 @@ jobs:
 To push the commit of updating the number successfully, you may specify the personal access token who has a permission (which has a repo scope) to push the commit. For example, if there are some rules to protect the branch, you need to specify the token to avoid the rules.
 
 Also, you need to specify the `paths-ignore` to avoid executing the same job continuously.
+
+Notice: The `secrets.YOUR_PERSONAL_ACCESS_TOKEN` must have concrete expired date. If the token doesn't have any expired date, not work normally.
