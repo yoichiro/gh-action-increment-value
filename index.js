@@ -11,6 +11,8 @@ Toolkit.run(async tools => {
   try {
     console.log(`INPUT_TARGET_DIRECTORY: ${process.env.INPUT_TARGET_DIRECTORY}`);
     console.log(`GITHUB_WORKSPACE: ${process.env.GITHUB_WORKSPACE}`);
+    await tools.exec('pwd');
+    await tools.exec('git status');
     // Read the target file
     const targetFile = path.join(
       process.env.GITHUB_WORKSPACE,
