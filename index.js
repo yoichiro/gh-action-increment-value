@@ -12,6 +12,8 @@ Toolkit.run(async tools => {
     console.log(`INPUT_TARGET_DIRECTORY: ${process.env.INPUT_TARGET_DIRECTORY}`);
     console.log(`GITHUB_WORKSPACE: ${process.env.GITHUB_WORKSPACE}`);
     await tools.exec('pwd');
+    console.log('Set safe directory');
+    await tools.exec(`git config --global --add safe.directory ${process.env.GITHUB_WORKSPACE}`);
     await tools.exec('git status');
     // Read the target file
     const targetFile = path.join(
