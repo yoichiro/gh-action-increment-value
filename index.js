@@ -1,19 +1,24 @@
 const { Toolkit } = require('actions-toolkit');
 const fs = require('fs');
+const path = require('path');
 
-if (process.env.INPUT_TARGET_DIRECTORY) {
-  process.env.GITHUB_WORKSPACE = `${process.env.GITHUB_WORKSPACE}/${process.env.INPUT_TARGET_DIRECTORY}`;
-  process.chdir(process.env.GITHUB_WORKSPACE);
-}
+// if (process.env.INPUT_TARGET_DIRECTORY) {
+//   process.env.GITHUB_WORKSPACE = `${process.env.GITHUB_WORKSPACE}/${process.env.INPUT_TARGET_DIRECTORY}`;
+//   process.chdir(process.env.GITHUB_WORKSPACE);
+// }
 
 Toolkit.run(async tools => {
   try {
     console.log(`INPUT_TARGET_DIRECTORY: ${process.env.INPUT_TARGET_DIRECTORY}`);
     console.log(`GITHUB_WORKSPACE: ${process.env.GITHUB_WORKSPACE}`);
     // Read the target file
-    const targetFile = process.env.INPUT_TARGET_FILE;
+    const targetFile = path.join(
+      process.env.GITHUB_WORKSPACE,
+      process.env.INPUT_TARGET_DIRECTORY,
+      process.env.INPUT_TARGET_FILE
+    );
     console.log(`Target file: ${targetFile}`);
-    const content = fs.readFileSync(`./${targetFile}`, 'utf8');
+    const content = fs.readFileSync(targetFile, 'utf8');
     // Increment value
     const prefix = process.env.INPUT_PREFIX;
     console.log(`prefix: ${prefix}`);
