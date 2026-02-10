@@ -1,16 +1,16 @@
-FROM node:19
+FROM node:25-alpine3.22
 
 LABEL "com.github.actions.name"="Automated value increment."
 LABEL "com.github.actions.description"="Automated value increment."
 LABEL "com.github.actions.icon"="plus"
 LABEL "com.github.actions.color"="green"
 
+RUN apk update && apk add --no-cache git git-lfs
+
 COPY package*.json ./
 
-RUN apt-get update
-RUN apt-get -y install git git-lfs
-RUN npm install
+RUN npm ci --no-cache --prefer-offline --no-audit
 
-COPY . .
+COPY ./index.js ./
 
 ENTRYPOINT ["node", "/index.js"]
